@@ -647,7 +647,7 @@ function slide27(){
 	fill(0);
 	textSize(22);
 	text("○ ", 100, 110);
-	text("The problem was proposed in 1977 by the French philosopher Georges-Louis Leclerc, Comte du Buffon", 120, 90,
+	text("The problem was proposed in 1877 by the French philosopher Georges-Louis Leclerc, Comte du Buffon", 120, 90,
 		c_x - 170, 75);
 }
 
@@ -731,7 +731,7 @@ function slide38(){
 function slide39(){
 	slide38();
 	text("○ ", 100, 425);
-	text("It is one of the most famous constants in Mathematics, and we will always be eager to find more impressive computations of π", 120, 405, c_x - 170, 75);
+	text("It is one of the most famous constants in mathematics, and we will always be eager to find more impressive computations of π", 120, 405, c_x - 170, 75);
 }
 
 */
