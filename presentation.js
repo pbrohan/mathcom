@@ -36,6 +36,7 @@ var madh_corr = 0;
 var nterm_viet = 0
 var viet_pi = 1;
 var viet_term = 0;
+var viet_speed = 80; //lower is faster
 var framecount = 1;
 var x_coords = [];
 var y_coords = [];
@@ -248,15 +249,19 @@ function slide5(){
 function slide6(){
 	slide5();
 	image(img_for, 170, 210);
+	nterm_viet = 0
+	viet_pi = 1;
+	viet_term = 0;
+	vier_speed = 80;
 }
 */
-function slide6(){
+function slide6(){ //If I have time, could update formula as we go along as well.
 	slide5();
 	katex.render("\\frac{2}{\\pi}=\\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{2+\\sqrt{2}}}{2} \\cdot \\frac{\\sqrt{2+ \\sqrt{2 + \\sqrt{2}}}}{2} \\ldots",mykatex1);
 	maths.style.top = "210px";
 	maths.style.left = "170px";
 	maths.style.fontSize = "30px";
-	if (framecount % 80 ==1){
+	if (framecount % viet_speed ==1){
 		nterm_viet += 1;
 		viet_term = Vieterm(viet_term);
 		viet_pi = viet_pi * viet_term;
@@ -279,7 +284,29 @@ function slide8(){
 	text("As a hand-computed method, this is relatively effective, and Viéte used it to compute π accutately to 9 decimal places", 120, 395, c_x -150, 75);	
 }
 
-/* +4
+function slide9(){
+	slide8();
+	viet_speed = 10;
+}
+
+function slide10(){
+	background(255);
+	textSize(30);
+	fill(0,0,150);
+	text("The Leibniz Sequence", 20, 30);
+	fill(0);
+	textSize(22);
+	text("○", 100, 110);
+	text("When asked how to compute π, most undergraduate mathematicians would be able to point you towards the Leibniz sequence.", 120, 90, c_x - 150, 75);
+}
+
+function slide11(){
+	katex.render("\\frac{\\pi}{4} = 1 - \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{7} + \\ldots + (-1)^n \\frac{1}{2n+1} ",mykatex1);
+	maths.style.top = "170px"
+	mahs.style.left = "200px"
+ }
+
+/* +7
 
 
 function slide5(){
