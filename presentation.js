@@ -156,6 +156,7 @@ function slide1(){
 	katex.render("\\pi \\approx 3.1415", mykatex1);
 	maths.style.top = "530px";
 	maths.style.left = "460px";
+	maths.style.fontSize = "16px";
 
 }
 
@@ -301,12 +302,29 @@ function slide10(){
 }
 
 function slide11(){
+	slide10();
 	katex.render("\\frac{\\pi}{4} = 1 - \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{7} + \\ldots + (-1)^n \\frac{1}{2n+1} ",mykatex1);
-	maths.style.top = "170px"
-	mahs.style.left = "200px"
+	maths.style.fontSize = "27px"
+	maths.style.top = "170px";
+	maths.style.left = "200px";
  }
 
-/* +7
+ function slide12(){
+ 	slide11();
+ 	text("○", 100, 250);
+ 	text("In 1861, James Gregory published a paper in the Mathematical Gazette stating a new expression for arctan(x):", 120, 230, c_x - 150, 75);
+ 	katex.render("arctan(x) = x - \\frac{x^3}{3} + \\frac{x^5}{5}- \\frac{x^7}{7} + \\ldots + (-1)^n\\frac{x^{2n+1}}{2n+1}",mykatex2);
+ 	maths1.style.top = "300px";
+ 	maths1.style.left = "200px";
+ 	maths1.style.fontSize = "23px";
+ 	text("where substituting in x = 1 give us an expression for", 120, 370);
+ 	katex.render("\\frac{\\pi}{4}", mykatex3)
+ 	maths2.style.top = "360px";
+ 	maths2.style.left = (textWidth("where substituting in x = 1 give us an expression for ") + 130).toString() + "px";
+
+ }
+
+/* +8
 
 
 function slide5(){
@@ -769,7 +787,7 @@ function keyPressed(){
 	}
 	if (keyCode == LEFT_ARROW){
 		if (slidenum > 0){
-			if (slidenum == 8){
+			if (slidenum == 8){ //Update to be correct slide
 				slidenum = 7;
 			}
 			framecount = 1;
