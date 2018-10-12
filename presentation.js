@@ -312,7 +312,7 @@ function slide11(){
  function slide12(){
  	slide11();
  	text("○", 100, 250);
- 	text("In 1861, James Gregory published a paper in the Mathematical Gazette stating a new expression for arctan(x):", 120, 230, c_x - 150, 75);
+ 	text("In 1671, James Gregory published a paper in Mathematics Magazine stating a new expression for arctan(x):", 120, 230, c_x - 150, 75);
  	katex.render("arctan(x) = x - \\frac{x^3}{3} + \\frac{x^5}{5}- \\frac{x^7}{7} + \\ldots + (-1)^n\\frac{x^{2n+1}}{2n+1}",mykatex2);
  	maths1.style.top = "300px";
  	maths1.style.left = "200px";
@@ -324,7 +324,55 @@ function slide11(){
 
  }
 
-/* +8
+ function slide13(){
+ 	slide12();
+ 	text("○", 100, 405);
+ 	text("However, in 1835, C. M. Whish published a collecton of 16th century papers from the Kerala school of Astronomy and Mathematics in Eastern India.", 120, 385, c_x - 150, 75);
+ }
+
+ function slide14(){
+ 	slide13();
+ 	text("○", 100, 465);
+ 	text("We now generally credit this discovery to Madhava of Sangamagrama (1340 - 1425), the founder of the school.", 120, 445, c_x - 150, 75);
+ }
+
+ function slide15(){
+ 	background(255);
+	textSize(30);
+	fill(0,0,150);
+	text("The Leibniz Sequence", 20, 30);
+	fill(255, 0, 0);
+	text("^", 125, 60);
+	rotate(0.4);
+	textSize(25);
+	text("Madhava", 100, 20);
+	rotate(-0.4);
+	fill(0);
+	textSize(22);
+	stroke(255,0,0);
+	strokeWeight(2);
+	line(85, 30, 170, 7);
+	strokeWeight(1);
+	noStroke();
+ 	text("○", 100, 150);
+ 	text("One of the later papers by the group gives a proof:", 120, 150);
+ }
+
+ function slide16(){
+ 	slide15();
+ 	stroke(0);
+ 	noFill();
+ 	rect(550, 200, 400, 400);
+ 	arc(550, 200, 800, 800, 0, HALF_PI);
+ 	fill(0);
+ 	noStroke();
+ 	fill(0,0,150);
+ 	text("1", 100, 200);
+ 	fill(0);
+ 	text("Draw a quarter circle with radius 1 inside a square", 120, 180, c_x - 600, 75);
+ }
+
+/* +17
 
 
 function slide5(){
