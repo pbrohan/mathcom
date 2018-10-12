@@ -372,7 +372,7 @@ function slide11(){
  	text("Draw a quarter circle with radius 1 inside a square", 120, 180, c_x - 600, 75);
  }
 
-/* +17
+/* +12
 
 
 function slide5(){
