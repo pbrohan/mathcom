@@ -38,6 +38,10 @@ var viet_pi = 1;
 var viet_term = 0;
 var viet_speed = 80; //lower is faster
 var framecount = 1;
+
+var line_len = 1;
+var line_par = 1;
+
 var x_coords = [];
 var y_coords = [];
 var dists = [];
@@ -372,7 +376,43 @@ function slide11(){
  	text("Draw a quarter circle with radius 1 inside a square", 120, 180, c_x - 600, 75);
  }
 
-/* +12
+ function slide17(){
+ 	slide16();
+ 	fill(0,0,150);
+ 	text("2", 100, 270);
+ 	fill(0);
+ 	text("Split the side of the square into n equal parts of length 𝛿, and join two ends of a length to the center of the arc.", 120, 250, c_x - 600, 110);
+ 	stroke(100,100,100);
+ 	strokeWeight(2);
+ 	for (i = 1; i < 9; i++){
+ 		line(955,200+i*50,955,200+i*50-line_len);
+ 	}
+ 	if (line_len < 47){
+ 		line_len += 1;
+ 	} else{
+ 		strokeWeight(1);
+ 		noStroke();
+ 		text("𝛿", 960, 530);
+ 		stroke(100,100,100);
+ 	 	}
+ 	stroke(0);
+ 	strokeWeight(1);
+ 	noStroke(); 
+ }
+
+function slide18(){
+	slide17();
+	stroke(0);
+	line(950,400,950-(400*(line_par/50)),400-(200*(line_par/50)));
+	line(950,450,950-(400*(line_par/50)),450-(250*(line_par/50)));	
+	if (line_par < 50){
+			line_par += 1
+	}
+
+	noStroke();
+}
+
+/* +14
 
 
 function slide5(){
