@@ -1,7 +1,9 @@
  /* If you ever wondered "should I hand-code my presentation in Javascript?"
  The answer is no. You get a wonderul interactive presentation, but everything
  takes five times as long.
- Also you will get very lazy and do bad coding.
+ Also you will get very lazy and do bad coding. Would it be significantly faster to only re-draw
+ the parts of the canvas which change (and also get rid of the huge chains of functions?) Yes.
+ But because nothing is broken and I don't care how fast this runs, I'm not changing it.
 */
   var c_x = 1024;
   var c_y = 768;
@@ -41,6 +43,8 @@ var framecount = 1;
 
 var line_len = 1;
 var line_par = 1;
+
+var num_parts = 5; //number of parts for Madhava proof, minimum 4
 
 var x_coords = [];
 var y_coords = [];
@@ -345,6 +349,176 @@ function slide11(){
 	textSize(30);
 	fill(0,0,150);
 	text("The Leibniz Sequence", 20, 30);
+	fill(0);
+	textSize(22);
+ 	text("○", 100, 150);
+ 	text("One of the later papers by the group gives a proof:", 120, 150);
+ }
+
+ function slide16(){
+ 	slide15();
+ 	textSize(30);
+ 	fill(255, 0, 0);
+	text("^", 125, 60);
+	rotate(0.4);
+	textSize(25);
+	text("Madhava", 100, 20);
+	rotate(-0.4);
+	fill(0);
+	stroke(255,0,0);
+	strokeWeight(2);
+	line(85, 30, 170, 7);
+	strokeWeight(1);
+	noStroke();
+	textSize(22);
+ }
+
+function msquare1(){
+	stroke(0);
+ 	noFill();
+ 	rect(550, 200, 400, 400);
+ 	arc(550, 200, 800, 800, 0, HALF_PI);
+ 	fill(0);
+ 	noStroke();
+ 	 text("O", 550, 197);
+ 	 text("X", 950, 197);
+}
+
+
+ function slide17(){
+ 	slide16();
+ 	fill(0,0,150);
+ 	text("1", 100, 200);
+ 	fill(0);
+ 	text("Draw a quarter circle with center O and radius 1 inside a square", 120, 180, c_x - 600, 75);
+ 	if (slidenum == (17)){
+ 		 msquare1();
+ 	}
+
+ }
+
+function msquare2(){
+	msquare1();
+	stroke(100,100,100);
+ 	strokeWeight(2);
+ 	for (i = 1; i < num_parts+1; i++){
+ 		line(955,200+i*(400/num_parts),955,200+i*(400/num_parts)-line_len);
+ 	}
+ 	if (line_len < (400/num_parts - 3)){
+ 		line_len += 2;
+ 	} else{
+ 		line_len = (400/num_parts - 3);
+ 		strokeWeight(1);
+ 		noStroke();
+ 		text("𝛿", 960, 570);
+ 		stroke(100,100,100);
+ 	 	}
+ 	stroke(0);
+ 	strokeWeight(1);
+ 	noStroke(); 
+}
+
+ function slide18(){
+ 	slide17();
+ 	fill(0,0,150);
+ 	text("2", 100, 270);
+ 	fill(0);
+ 	text("Split the side of the square into n equal parts of length 𝛿, and join two ends of a length, A and B to the center of the arc.", 120, 250, c_x - 600, 110);
+ 	if (slidenum == 18); {
+ 	msquare2();
+ 	}
+ }
+
+ function msquare3(){
+ 	msquare2();
+ 	stroke(0);
+	line(950,200+(400/num_parts)*3,950-(400*(line_par/50)),200+(400/num_parts)*3-((400/num_parts)*3*(line_par/50)));
+	line(950,200+(400/num_parts)*4,950-(400*(line_par/50)),200+(400/num_parts)*4-((400/num_parts)*4*(line_par/50)));	
+	if (line_par < 50){
+			line_par += 1
+	}
+
+	noStroke();
+	text("A", 960, 200+(400/num_parts)*3);
+	text("B", 960, 200+(400/num_parts)*4);
+}
+
+
+function slide19(){
+	slide18();
+	if (slidenum == 19){
+	msquare3();
+	}
+
+}
+
+function msquare4(){
+	msquare3();
+	sf = 400/Math.pow(Math.pow(400,2)+Math.pow((400/num_parts*3),2),0.5);
+	h1 = ((400/num_parts)*(4-3)*400*(400/num_parts)*4)/(Math.pow(400,2)+Math.pow((400/num_parts*4),2));
+	x_t = 950-h1
+	h2 = 400*h1/(400/num_parts*4);
+	y_t = 200+(400/num_parts)*3+h2;
+
+	stroke(0,255,100);
+	strokeWeight(2);
+	line(550 + 400*sf/400*(x_t - 550),
+		200 + sf*(y_t-200)
+		,550+400*sf, 200+(400/num_parts)*3*sf);
+	strokeWeight(1);
+	noStroke();
+
+ 	text("C",550+400*sf-9, 190+(400/num_parts)*3*sf);
+ 	text("D", 530 + 400*sf/400*(x_t - 550), 210 + sf*(y_t-200));
+}
+
+function slide20(){
+	slide19();
+	if (slidenum == 20){
+	msquare4();
+	}
+	fill(0,0,150);
+ 	text("3", 100, 375);
+ 	fill(0);
+ 	text("The line OA cuts the intersects the circle at point C. Draw perpendicular lines from points A and C to the line OB.", 120, 355, c_x - 600, 110);
+}
+
+function msquare5(){
+	msquare4();
+	stroke(0);
+	line(x_t,y_t,950,200+(400/num_parts)*3);
+	noStroke();
+	text("E",x_t-20,y_t+10);
+}
+
+function slide21(){
+	slide20();
+	msquare5();
+}
+
+function slide22(){
+	slide21();
+	text("This gives us two similar triangles OAE and OCD, and so", 120, 460, c_x - 600, 110);
+	katex.render("\\frac{|CD|}{|OC|} = \\frac{|AE|}{|OA|}",mykatex1);
+	maths.style.top = "550px";
+	maths.style.left = "150px";
+	maths.style.fontSize = "20px";
+}
+
+function slide23(){
+	slide21();
+	text("This gives us two similar triangles OAE and OCD, and so", 120, 460, c_x - 600, 110);
+	katex.render("\\frac{|CD|}{|OC|} = \\frac{|AE|}{|OA|} \\therefore |CD| = \\frac{|AE|}{|OA|}",mykatex1);
+	maths.style.top = "550px";
+	maths.style.left = "150px";
+	maths.style.fontSize = "20px";
+}
+
+function slide24(){
+	background(255);
+	textSize(30);
+	fill(0,0,150);
+	text("The Leibniz Sequence", 20, 30);
 	fill(255, 0, 0);
 	text("^", 125, 60);
 	rotate(0.4);
@@ -352,67 +526,21 @@ function slide11(){
 	text("Madhava", 100, 20);
 	rotate(-0.4);
 	fill(0);
-	textSize(22);
 	stroke(255,0,0);
 	strokeWeight(2);
 	line(85, 30, 170, 7);
 	strokeWeight(1);
 	noStroke();
- 	text("○", 100, 150);
- 	text("One of the later papers by the group gives a proof:", 120, 150);
- }
-
- function slide16(){
- 	slide15();
- 	stroke(0);
- 	noFill();
- 	rect(550, 200, 400, 400);
- 	arc(550, 200, 800, 800, 0, HALF_PI);
- 	fill(0);
- 	noStroke();
- 	fill(0,0,150);
- 	text("1", 100, 200);
- 	fill(0);
- 	text("Draw a quarter circle with radius 1 inside a square", 120, 180, c_x - 600, 75);
- }
-
- function slide17(){
- 	slide16();
- 	fill(0,0,150);
- 	text("2", 100, 270);
- 	fill(0);
- 	text("Split the side of the square into n equal parts of length 𝛿, and join two ends of a length to the center of the arc.", 120, 250, c_x - 600, 110);
- 	stroke(100,100,100);
- 	strokeWeight(2);
- 	for (i = 1; i < 9; i++){
- 		line(955,200+i*50,955,200+i*50-line_len);
- 	}
- 	if (line_len < 47){
- 		line_len += 1;
- 	} else{
- 		strokeWeight(1);
- 		noStroke();
- 		text("𝛿", 960, 530);
- 		stroke(100,100,100);
- 	 	}
- 	stroke(0);
- 	strokeWeight(1);
- 	noStroke(); 
- }
-
-function slide18(){
-	slide17();
-	stroke(0);
-	line(950,400,950-(400*(line_par/50)),400-(200*(line_par/50)));
-	line(950,450,950-(400*(line_par/50)),450-(250*(line_par/50)));	
-	if (line_par < 50){
-			line_par += 1
-	}
-
-	noStroke();
+	textSize(22);
+	msquare5();
+	katex.render("|CD| = \\frac{|AE|}{|OA|}",mykatex1);
+	maths.style.top = "150px";
+	maths.style.left = "150px";
+	maths.style.fontSize = "20px";
 }
 
-/* +14
+
+/* +20
 
 
 function slide5(){
