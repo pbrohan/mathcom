@@ -335,7 +335,7 @@ function slide11(){
  function slide13(){
  	slide12();
  	text("○", 100, 405);
- 	text("However, in 1835, C. M. Whish published a collecton of 16th century papers from the Kerala school of Astronomy and Mathematics in Eastern India.", 120, 385, c_x - 150, 75);
+ 	text("However, in 1835, C. M. Whish published a collection of 16th century papers from the Kerala school of Astronomy and Mathematics in Eastern India.", 120, 385, c_x - 150, 75);
  }
 
  function slide14(){
@@ -480,7 +480,7 @@ function slide20(){
 	fill(0,0,150);
  	text("3", 100, 375);
  	fill(0);
- 	text("The line OA cuts the intersects the circle at point C. Draw perpendicular lines from points A and C to the line OB.", 120, 355, c_x - 600, 110);
+ 	text("The line OA cuts the intersects the circle at point C. Draw perpendicular lines from points C and A to the line OB.", 120, 355, c_x - 600, 110);
 }
 
 function msquare5(){
@@ -540,7 +540,7 @@ function slide24(){
 }
 
 
-/* +20
+/* +20	
 
 
 function slide5(){
