@@ -881,7 +881,7 @@ function slide27(){
 	fill(0);
 	textSize(22);
 	text("○ ", 100, 110);
-	text("The problem was proposed in 1877 by the French philosopher Georges-Louis Leclerc, Comte du Buffon", 120, 90,
+	text("The problem was proposed in 1777 by the French philosopher Georges-Louis Leclerc, Comte du Buffon", 120, 90,
 		c_x - 170, 75);
 }
 
