@@ -63,7 +63,7 @@ var crossed = 0;
 var iscross = 0;
 var niscross = 0;
 
-slidenum = 0;
+slidenum = 24;
 slidemax = 39;
 
 /*Currently this cheats to find the side lengths and uses trig.
@@ -423,7 +423,7 @@ function msquare2(){
  	fill(0,0,150);
  	text("2", 100, 270);
  	fill(0);
- 	text("Split the side of the square into n equal parts of length 𝛿, and join two ends of a length, A and B to the center of the arc.", 120, 250, c_x - 600, 110);
+ 	text("Split the side of the square into n equal parts of length 𝛿, and join two ends of the rth length, A and B to the center of the arc.", 120, 250, c_x - 600, 110);
  	if (slidenum == 18); {
  	msquare2();
  	}
@@ -460,7 +460,7 @@ function msquare4(){
 	h2 = 400*h1/(400/num_parts*4);
 	y_t = 200+(400/num_parts)*3+h2;
 
-	stroke(0,255,100);
+	stroke(0);
 	strokeWeight(2);
 	line(550 + 400*sf/400*(x_t - 550),
 		200 + sf*(y_t-200)
@@ -534,12 +534,129 @@ function slide24(){
 	textSize(22);
 	msquare5();
 	katex.render("|CD| = \\frac{|AE|}{|OA|}",mykatex1);
-	maths.style.top = "150px";
+	maths.style.top = "140px";
 	maths.style.left = "150px";
 	maths.style.fontSize = "20px";
+
+	fill(0,0,150);
+ 	text("4", 100, 200);
+ 	fill(0);
+ 	text("We can also see that triangles AEB and OBX are similar, and so", 120, 180, c_x - 600, 75);
 }
 
+function slide25(){
+	slide24();
+	katex.render("\\frac{|AB|}{|OB|} = \\frac{|AE|}{|OX|}",mykatex2);
+	maths1.style.top = "250px";
+	maths1.style.left = "150px";
+	maths1.style.fontSize = "20px";
+}
 
+function slide26(){
+	slide24();
+	katex.render("\\frac{|AB|}{|OB|} = |AE|",mykatex2);
+	maths1.style.top = "250px";
+	maths1.style.left = "150px";
+	maths1.style.fontSize = "20px";
+}
+
+function slide27(){
+	slide26();
+	fill(0,0,150);
+ 	text("5", 100, 310);
+ 	fill(0);
+ 	text("And so we can conclude that", 120, 290, c_x - 600, 75);
+ 	katex.render("|CD| = \\frac{|AB|}{|OA||OB|}", mykatex3);
+ 	maths2.style.top = "330px";
+ 	maths2.style.left = "150px";
+ 	maths2.style.fontSize = "20px";
+}
+
+function slide28(){
+	slide26();
+	fill(0,0,150);
+ 	text("5", 100, 310);
+ 	fill(0);
+ 	text("And so we can conclude that", 120, 290, c_x - 600, 75);
+ 	katex.render("|CD| = \\frac{|AB|}{|OA||OB|} \\approx \\frac{|AB|}{|OA|^2}", mykatex3);
+ 	maths2.style.top = "330px";
+ 	maths2.style.left = "150px";
+ 	maths2.style.fontSize = "20px";
+}
+
+function slide29(){
+	slide28();
+	fill(0,0,150);
+ 	text("6", 100, 390);
+ 	fill(0);
+ 	text("And so, by the Pythagorean theorem", 120, 370, c_x - 600, 75);
+ 	katex.render("|CD| = \\frac{\\delta}{1^2 + |XA|^2}", mykatex4)
+ 	maths3.style.top = "415px";
+ 	maths3.style.left = "150px";
+ 	maths3.style.fontSize = "20px";
+ 	 num_parts = 5;
+}
+
+function slide30(){
+	slide28();
+	fill(0,0,150);
+ 	text("6", 100, 390);
+ 	fill(0);
+ 	text("And so, by the Pythagorean theorem", 120, 370, c_x - 600, 75);
+ 	katex.render("|CD| = \\frac{\\delta}{1^2 + |XA|^2} = \\frac{\\delta}{1 + r^2\\delta^2}", mykatex4)
+  	maths3.style.top = "415px";
+ 	maths3.style.left = "150px";
+ 	maths3.style.fontSize = "20px";
+}
+
+function slide31(){
+	slide30();
+	fill(0,0,150);
+ 	text("7", 100, 470);
+ 	fill(0);
+ 	text("As CD approximates the arc of the circle, we can in general say", 120, 450, c_x - 600, 75);
+ 	katex.render("\\frac{\\pi}{4}=\\lim_{n \\rightarrow \\infty}\\sum_{r = 1}^{n} \\frac{\\delta}{1 + r^2\\delta^2}; \\delta = \\frac{1}{n}", mykatex5);
+ 	maths4.style.top = "520px";
+ 	maths4.style.left = "150px";
+ 	maths4.style.fontSize = "20px"
+
+}
+
+function slide32(){
+	slide31();
+	if (framecount % 30 == 1){
+		num_parts += 1;
+	}
+	framecount += 1;
+}
+
+function slide33(){
+	slide31();
+	katex.render("\\frac{\\pi}{4} = 1 - \\frac{1}{3}+ \\frac{1}{5} \\ldots + (-1)^n \\frac{1}{2n+1}", mykatex6);
+	maths5.style.top = "570px";
+	maths5.style.left = "150px"
+	maths5.style.fontSize = "20px";
+}
+
+function slide34(){
+	background(255);
+	textSize(30);
+	fill(0,0,150);
+	text("The Leibniz Sequence", 20, 30);
+	fill(255, 0, 0);
+	text("^", 125, 60);
+	rotate(0.4);
+	textSize(25);
+	text("Madhava", 100, 20);
+	rotate(-0.4);
+	fill(0);
+	stroke(255,0,0);
+	strokeWeight(2);
+	line(85, 30, 170, 7);
+	strokeWeight(1);
+	noStroke();
+	textSize(22);
+}
 /* +20	
 
 
@@ -970,11 +1087,19 @@ function slide39(){
 
 */
 
+/*
+References:
+http://crd-legacy.lbl.gov/~dhbailey/dhbpapers/pi-quest.pdf - The Quest for pi
+https://www.craig-wood.com/nick/articles/pi-archimedes/ - Craig Wood - Fun with Math am Python
+https://pdfs.semanticscholar.org/5cb2/4ef31a09a66625a26a74de59273dff5bb232.pdf - The Discovery of the series formula for π by Leibniz, Gregory and Nilakantha.
+*/
+
 var maths = document.getElementById('mykatex1');
 var maths1 = document.getElementById('mykatex2');
 var maths2 = document.getElementById('mykatex3');
 var maths3 = document.getElementById('mykatex4');
 var maths4 = document.getElementById('mykatex5');
+var maths5 = document.getElementById('mykatex6')
 
 function draw() {
 	/*
@@ -998,6 +1123,7 @@ function keyPressed(){
 		maths2.innerHTML = "";
 		maths3.innerHTML = "";
 		maths4.innerHTML = "";
+		maths5.innerHTML = "";
 		}
 
 	}
@@ -1013,6 +1139,7 @@ function keyPressed(){
 			maths2.innerHTML = "";
 			maths3.innerHTML = "";
 			maths4.innerHTML = "";
+			maths5.innerHTML = "";
 
 		}
 
