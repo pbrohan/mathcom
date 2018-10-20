@@ -186,10 +186,10 @@ function slide3(){
 	noFill();
 	textSize(16);
 	stroke(0);
-	ellipse(250, 250, shape_radius*2, shape_radius*2);
-	polygon(250, 250, shape_radius, shape_sides);
+	ellipse(250, 300, shape_radius*2, shape_radius*2);
+	polygon(250, 300, shape_radius, shape_sides);
 	inscribe_r = shape_radius/cos(PI/(shape_sides));
-	polygon(250,250, inscribe_r, shape_sides);
+	polygon(250,300, inscribe_r, shape_sides);
 	if(framecount % 50 == 0){
 	shape_sides = shape_sides + 1;
 	}
