@@ -29,7 +29,7 @@ function setup() {
 
 var framecount = 1;
 
-var shape_radius = 50;
+var shape_radius = 150;
 var shape_sides = 3;
 
 
@@ -178,6 +178,7 @@ function slide2(){
 
 function slide3(){
 	/*reset all related variables if new */
+	strokeWeight(2);
 	if (framecount == 1){
 		shape_sides = 3;
 	}
@@ -185,30 +186,31 @@ function slide3(){
 	noFill();
 	textSize(16);
 	stroke(0);
-	ellipse(70, 70, shape_radius*2, shape_radius*2);
-	polygon(70, 70, shape_radius, shape_sides);
+	ellipse(250, 250, shape_radius*2, shape_radius*2);
+	polygon(250, 250, shape_radius, shape_sides);
 	inscribe_r = shape_radius/cos(PI/(shape_sides));
-	polygon(70,70, inscribe_r, shape_sides);
+	polygon(250,250, inscribe_r, shape_sides);
 	if(framecount % 50 == 0){
 	shape_sides = shape_sides + 1;
 	}
 	noStroke();
 	fill(0);
-	text("Sides: " + shape_sides, 200, 30);
-	text("Inscribed perimeter: ", 200, 60);
+	text("Sides: " + shape_sides, 450, 30);
+	text("Inscribed perimeter: ", 450, 60);
 	i_p = get_outer_p(shape_sides);
-	cpi(i_p.toString(), 200 + textWidth("Inscribed perimeter: "), 60);
-	text("Circumscribed perimeter: ", 200, 90);
+	cpi(i_p.toString(), 450 + textWidth("Inscribed perimeter: "), 60);
+	text("Circumscribed perimeter: ", 450, 90);
 	c_p = get_inner_p(shape_sides);
-	cpi(c_p.toString(), 200 + textWidth("Circumscribed perimeter: "), 90);
-	text("Mean perimeter: " , 200, 120);
+	cpi(c_p.toString(), 450 + textWidth("Circumscribed perimeter: "), 90);
+	text("Mean perimeter: " , 450, 120);
 	n = (i_p + c_p)/2;
-	cpi(n.toString(), 200 + textWidth("Mean perimeter: "),120);
+	cpi(n.toString(), 450 + textWidth("Mean perimeter: "),120);
 	framecount += 1;
 	maths.style.top = framecount.toString() + "px";
 }
 
 function slide4(){
+	strokeWeight(1);
 	background(255);
 	textSize(30);
 	fill(0,0,150);
