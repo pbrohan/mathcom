@@ -35,11 +35,14 @@ var shape_sides = 3;
 
 var madh_pi = 0;
 var madh_corr = 0;
+var madh_num = 1;
+var madh_speed = 80; //lower is faster - CHANGED FURTHER DOWN
 var nterm_viet = 0
 var viet_pi = 1;
 var viet_term = 0;
 var viet_speed = 80; //lower is faster
 var framecount = 1;
+var newpi = 1;
 
 var line_len = 1;
 var line_par = 1;
@@ -63,8 +66,8 @@ var crossed = 0;
 var iscross = 0;
 var niscross = 0;
 
-slidenum = 24;
-slidemax = 39;
+slidenum = 42;
+slidemax = 50;
 
 /*Currently this cheats to find the side lengths and uses trig.
 Should use formula from 
@@ -636,6 +639,13 @@ function slide33(){
 	maths5.style.top = "570px";
 	maths5.style.left = "150px"
 	maths5.style.fontSize = "20px";
+	madh_num = 1;
+	madh_pi = 0;
+	madh_corr = 0;
+	madh_speed = 80;
+	nterm_viet = 0
+	viet_pi = 1;
+	viet_term = 0;
 }
 
 function slide34(){
@@ -656,12 +666,156 @@ function slide34(){
 	strokeWeight(1);
 	noStroke();
 	textSize(22);
+
+	text("Number of terms: " + madh_num , 100, 130);
+	if (framecount % madh_speed == 0){
+		madh_pi = Madhava(madh_pi,madh_num);
+		madh_corr = Madhava_correct(madh_num)*4
+		madh_num += 1
+		viet_term = Vieterm(viet_term)
+		viet_pi = viet_pi * viet_term;
+	}
+	text("π ≈", 350, 130)
+	cpi(madh_pi.toString(), 400, 130);
+
+	text("○", 100, 165);
+	text("This teaches us something new about π, but there is a slight hitch.", 120, 165);
+	framecount += 1;
+}
+
+function slide35(){
+	madh_speed = 1;
+	slide34();
+}
+
+function slide36(){
+	slide34();
+	text("Viéte's approximation: ", 100, 200);
+	cpi((2/viet_pi).toString(), 350, 200);
+}
+
+function slide37(){
+	madh_speed = 80;
+	slide34();
+	text("○", 100, 200);
+	text("The Keralans found a series of correction terms to the sequence ",120,180,c_x - 150, 75);
+	katex.render("f_1(n) = (-1)^n\\frac{1}{2n}",mykatex1);
+	katex.render("f_2(n) = (-1)^n\\frac{n}{4n^2+1}",mykatex2);
+	katex.render("f_3(n) = (-1)^n\\frac{n^2+1}{4n^3+5n}",mykatex3);
+	maths.style.top = "235px";
+	maths.style.left = "120px";
+	maths.style.fontSize = "20px";
+	maths1.style.top = "270px";
+	maths1.style.left = "120px";
+	maths1.style.fontSize = "20px";
+	maths2.style.top = "305px";
+	maths2.style.left = "120px";
+	maths2.style.fontSize = "20px";
+
+}
+
+function slide38(){
+	slide34();
+	text("○", 100, 200);
+	text("The Keralans found a series of correction terms to the sequence ",120,180,c_x - 150, 75);
+	katex.render("f_1(n) = (-1)^n\\frac{1}{2n}",mykatex1);
+	katex.render("f_2(n) = (-1)^n\\frac{n}{4n^2+1}",mykatex2);
+	katex.render("f_3(n) = (-1)^n\\frac{n^2+1}{4n^3+5n}",mykatex3);
+	maths.style.top = "235px";
+	maths.style.left = "120px";
+	maths.style.fontSize = "20px";
+	maths1.style.top = "270px";
+	maths1.style.left = "120px";
+	maths1.style.fontSize = "20px";
+	maths2.style.top = "305px";
+	maths2.style.left = "120px";
+	maths2.style.fontSize = "20px";
+	text("○", 100, 355);
+	text("Whilst we don't know how they came about these functions, they are the first three terms of the infinite continued fraction", 120, 335, c_x - 150, 75);
+	katex.render("f_n(x) = \\frac{1}{2}\\cdot \\cfrac{1}{n + \\cfrac{1^2}{n + \\cfrac{2^2}{n + \\cfrac{3^2}{\\ldots}}}}", mykatex4);
+	maths3.style.top = "390px";
+	maths3.style.left = "120px";
+	maths3.style.fontSize = "16px";
+}
+
+function slide39(){
+	madh_num = 1;
+	madh_pi = 0;
+	madh_corr = 0;
+	madh_speed = 50
+	slidenum += 1;
+}
+
+function slide40(){
+	slide38()
+	if (madh_num%2 == 0) { //Adds - in correct place without the text moving
+	text("-", 150 + textWidth("Correction term:  "), 550);
+	}
+	text(Math.abs(madh_corr), 150 + textWidth("Correction term:  - "), 550);
+	text("Correction term:", 120, 550);
+	
+	cpi((madh_pi + madh_corr).toString(), 150 + textWidth("Correction term:  - "), 585);
+	text("Corrected sequence", 120, 585);
+}
+
+function slide41(){
+	madh_speed = 1;
+	slide40();
+}
+
+function slide42(){
+	madh_num = 1;
+	madh_pi = 0;
+	madh_corr = 0;
+	madh_speed = 80;
+	nterm_viet = 0
+	viet_pi = 1;
+	viet_term = 0;
+	background(255);
+	textSize(30);
+	fill(0,0,150);
+	text("Modern Calculations of π", 20, 30);
+	fill(0);
+	textSize(22);
+	text("○", 100, 110);
+	text("In his first published paper in 1914, Ramanujan published several expressions for π including the famous ", 120, 90, c_x - 150, 75);
+	katex.render("\\frac{1}{\\pi} = \\frac{2\\sqrt{2}}{9801} \\sum_{k=0}^{\\infty} \\frac{(4k)!(1103 + 26390k)}{(k!)^4 396^{4k}}",mykatex1);
+	maths.style.top = "160px";
+	maths.style.left = "120px";
+	maths.style.fontSize = "20px";
+}
+
+function slide43(){
+	slide42();
+	text("○", 100, 220);
+	text("The formula was largely forgotten until November of 1985, when R William Gosper Jr used this formula to calculate a record-breaking 17,326,100 digits of π.", 120, 200, c_x - 150, 75);
+}
+
+function slide44(){
+	slide43();
+	text("○", 100, 280);
+	text("The Chundovsky brothers built on Ramanujan's ideas and found an improved formula, calculating 14 correct new digits per term.", 120, 260, c_x - 150, 75);
+	katex.render("\\frac{1}{\\pi}= 12 \\sum_{k=1}^{\\infty}\\frac{(-1)^k (6k)!(545140134k + 13591409)}{(3k)!(k!)^3(640320^{3k+3/2})}",mykatex2);
+	maths1.style.top = "345px"
+	maths1.style.left = "120px"
+	maths1.style.fontSize = "20px"
+}
+
+function slide45(){
+	slide44()
+	text("○", 100, 410);
+	text("Research continues today. The Chundovskys continue to work on high performance computing, and the Borwein brothers work with Simon Plouffe to discover the BBP algorithm for calculating arbitrary digits of π.", 120, 390, c_x - 150, 110);
 }
 /* +20	
 
 
 function slide5(){
 	maths.style.fontSize = "16px";
+	maths1.style.fontSize = "16px";
+	maths2.style.fontSize = "16px";
+	maths3.style.fontSize = "16px";
+	maths4.style.fontSize = "16px";
+	maths5.style.fontSize = "160px";
 	background(255);
 	textSize(30);
 	fill(0,0,150);
@@ -1090,8 +1244,9 @@ function slide39(){
 /*
 References:
 http://crd-legacy.lbl.gov/~dhbailey/dhbpapers/pi-quest.pdf - The Quest for pi
-https://www.craig-wood.com/nick/articles/pi-archimedes/ - Craig Wood - Fun with Math am Python
+https://www.craig-wood.com/nick/articles/pi-archimedes/ - Craig Wood - Fun with Math in Python
 https://pdfs.semanticscholar.org/5cb2/4ef31a09a66625a26a74de59273dff5bb232.pdf - The Discovery of the series formula for π by Leibniz, Gregory and Nilakantha.
+https://www.maa.org/sites/default/files/pdf/pubs/amm_supplements/Monthly_Reference_5.pdf - Ramanujan's series for 1/π a survey
 */
 
 var maths = document.getElementById('mykatex1');
@@ -1129,8 +1284,8 @@ function keyPressed(){
 	}
 	if (keyCode == LEFT_ARROW){
 		if (slidenum > 0){
-			if (slidenum == 8){ //Update to be correct slide
-				slidenum = 7;
+			if (slidenum == 40){ //Update to be correct slide
+				slidenum = 39;
 			}
 			framecount = 1;
 			slidenum -= 1;
