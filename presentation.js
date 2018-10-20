@@ -1213,6 +1213,16 @@ function slide81(){
 	text("References", 20, 30);
 	fill(0);
 	textSize(22);
+	text("- The Quest for Pi - Bailey, Borwein, Borwein & Plouffe", 100, 100);
+	text("- Fun with Math in Python - Craig Wood", 100, 170,);
+	text("- The Discovery of the Series Formula for π by Leibniz, Gregory and Nilakantha - Ranjan Roy", 100, 240);
+	text("- Ramanujan's Series for 1/π: A Survey - Baruah, Berndt & Chan", 100, 310);
+	fill(0,0,200);
+	textSize(18);
+	text("http://crd-legacy.lbl.gov/~dhbailey/dhbpapers/pi-quest.pdf", 120, 135);
+	text("https://www.craig-wood.com/nick/articles/pi-archimedes/", 120, 205);
+	text("https://pdfs.semanticscholar.org/5cb2/4ef31a09a66625a26a74de59273dff5bb232.pdf", 120, 275);
+	text("https://www.maa.org/sites/default/files/pdf/pubs/amm_supplements/Monthly_Reference_5.pdf", 120, 345);
 }
 
 
@@ -1260,7 +1270,7 @@ function keyPressed(){
 	}
 	if (keyCode == LEFT_ARROW){
 		if (slidenum > 0){
-			if (slidenum == 40){ //Update to be correct slide
+			if (slidenum == 40){ 
 				slidenum = 39;
 			}
 			if (slidenum == 50){
