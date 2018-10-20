@@ -66,8 +66,8 @@ var crossed = 0;
 var iscross = 0;
 var niscross = 0;
 
-slidenum = 42;
-slidemax = 50;
+slidenum = 0;
+slidemax = 81;
 
 /*Currently this cheats to find the side lengths and uses trig.
 Should use formula from 
@@ -172,6 +172,11 @@ function slide1(){
 }
 
 function slide2(){
+	background(255);
+	text("Currently blank", 300, 300);
+}
+
+function slide3(){
 	/*reset all related variables if new */
 	if (framecount == 1){
 		shape_sides = 3;
@@ -201,42 +206,6 @@ function slide2(){
 	cpi(n.toString(), 200 + textWidth("Mean perimeter: "),120);
 	framecount += 1;
 	maths.style.top = framecount.toString() + "px";
-}
-
-function slide3(){
-	if (framecount == 1){
-		madh_pi = 0;
-		madh_corr = 0;
-		viet_pi = 1;
-		viet_term = 0;
-	}
-	background(255);
-	textSize(16);
-
-  	text("Step " + framecount, 50, 200);
-	newpi = Madhava(madh_pi,framecount);
-	cpi(newpi.toString(), 150, 200);
-	text("Madhava Sequence", 350, 200);
-	madh_pi = newpi;
-	
-	madh_corr = Madhava_correct(framecount)*4;
-	if (framecount%2 == 0) { //Adds - in correct place without the text moving
-	text("-", 141, 230);
-	}
-	text(Math.abs(madh_corr), 150, 230);
-	text("Correction term", 350, 230);
-	
-	cpi((madh_pi + madh_corr).toString(), 150, 260);
-	text("Corrected sequence", 350, 260);
-	
-/*	text("Step " + framecount, 50, 290);
-    viet_term = Vieterm(viet_term)
-	viet_pi = viet_pi * viet_term;
-	cpi((2/viet_pi).toString(), 150, 290);
-	text("Viéte's Sequence", 350, 290);
-*/
-	framecount += 1;
-
 }
 
 function slide4(){
@@ -806,10 +775,8 @@ function slide45(){
 	text("○", 100, 410);
 	text("Research continues today. The Chundovskys continue to work on high performance computing, and the Borwein brothers work with Simon Plouffe to discover the BBP algorithm for calculating arbitrary digits of π.", 120, 390, c_x - 150, 110);
 }
-/* +20	
 
-
-function slide5(){
+function slide46(){
 	maths.style.fontSize = "16px";
 	maths1.style.fontSize = "16px";
 	maths2.style.fontSize = "16px";
@@ -825,13 +792,13 @@ function slide5(){
 	text("○ Approximate π using statistics.", 100, 110);
 }
 
-function slide6(){
-	slide5();
+function slide47(){
+	slide46();
 	text("○ Method:", 100, 145);
 }
 
-function slide7(){
-	slide6();
+function slide48(){
+	slide47();
 	textSize(24);
 	fill(0,0,150);
 	text("1.", 120, 180);
@@ -842,8 +809,8 @@ function slide7(){
 
 var circlespeed = 50 //Controls how fast the circle draws. Lower is faster
 
-function slide8(){
-	slide7()
+function slide49(){
+	slide48()
 	stroke(0);
 	noFill();
 	rect(c_x-300,c_y-300 ,250,250);
@@ -862,9 +829,9 @@ var arcfill_b = 255;
 var fillspeed = 3;
 
 
-function slide9(){
+function slide50(){
 	circlespan = 0;
-	slide7();
+	slide48();
 	stroke(0);
 	noFill();
 	rect(c_x-300,c_y-300 ,250,250);
@@ -874,8 +841,8 @@ function slide9(){
 }
 
 
-function slide10(){
-	slide9();
+function slide51(){
+	slide50();
 	text("-  The area of the quadrant will be      .", 155, 215);
 	katex.render("\\frac{\\pi r^2}{4}", mykatex1);
 	maths.style.top = "202px";
@@ -895,8 +862,8 @@ function slide10(){
 	}
 }
 
-function slide11(){
-	slide9();
+function slide52(){
+	slide50();
 	text("-  The area of the quadrant will be      .", 155, 215);
 	katex.render("\\frac{\\pi r^2}{4}", mykatex1);
 	maths.style.top = "202px";
@@ -907,8 +874,8 @@ function slide11(){
 	maths1.style.left = (textWidth("-  The area of the square will be")+170).toString() + "px";
 }
 
-function slide12(){
-	slide11();
+function slide53(){
+	slide52();
 	text("-  The ratio of the area of the quadrant to the area of the square is    .", 155, 285);
 	katex.render("\\frac{\\pi}{4}", mykatex3);
 	maths2.style.top = "273px";
@@ -931,8 +898,8 @@ function addDot(){
 	y_coords.push(new_y);
 }
 
-function slide13(){
-	slide12();
+function slide54(){
+	slide53();
 	fill(0,0,150);
 	textSize(24);
 	text("2.", 120, 320);
@@ -949,8 +916,8 @@ function slide13(){
   	noStroke();
 }
 
-function slide14(){
-	slide12()
+function slide55(){
+	slide53()
 	fill(0,0,150);
 	textSize(24);
 	text("2.", 120, 320);
@@ -975,8 +942,8 @@ function slide14(){
 		.toString() + "px";
 }
 
-function slide15(){
-	slide14();
+function slide56(){
+	slide55();
 	fill(0,0,150);
 	textSize(24);
 	text("3.", 120, 390);
@@ -989,8 +956,8 @@ function slide15(){
 	fill(0);
 }
 
-function slide16(){
-	slide15();
+function slide57(){
+	slide56();
 	fill(0,0,150);
 	textSize(24);
 	text("4.", 120, 460);
@@ -1003,8 +970,8 @@ function slide16(){
 	maths4.style.fontSize = "20pt";
 }
 
-function slide17(){
-	slide16();
+function slide58(){
+	slide57();
 	textSize(27);
 	text("π ≈", 220, 620);
 	cpi((4*dots_in/(dots_in+dots_out)).toString(), 220 + textWidth("π ≈  "), 620)
@@ -1012,7 +979,7 @@ function slide17(){
 
 }
 
-function slide18(){
+function slide59(){
 	background(255);
 	text("Did you know we can measure π just by dropping sticks on a table and counting them?", 100, 300, c_x-300, c_y-350);
 	dots_in = 0;
@@ -1022,7 +989,7 @@ function slide18(){
 	y_coords = [];
 }
 
-function slide19(){
+function slide60(){
 	background(255);
 	textSize(30);
 	fill(0,0,150);
@@ -1032,8 +999,8 @@ function slide19(){
 	text("○ Method:", 100, 110);
 }
 
-function slide20(){
-	slide19();
+function slide61(){
+	slide60();
 	textSize(24);
 	fill(0,0,150);
 	text("1.", 120, 145);
@@ -1045,8 +1012,8 @@ function slide20(){
 	noStroke();
 }
 
-function slide21(){
-	slide20();
+function slide62(){
+	slide61();
 	textSize(24);
 	fill(0,0,150);
 	text("2.", 120, 215);
@@ -1081,8 +1048,8 @@ function slide21(){
   	noStroke();
 }
 
-function slide22(){
-	slide21();
+function slide63(){
+	slide62();
 	text("-  An individual stick will cross the line with probability", 155, 264, 2/3*c_x - 125, 70);
 	katex.render("\\frac{2l}{\\pi d}", mykatex1);
 	maths.style.top = "300px";
@@ -1091,8 +1058,8 @@ function slide22(){
 	niscross = 0;
 }
 
-function slide23(){
-	slide22();
+function slide64(){
+	slide63();
 	iscross = 0;
 	niscross = 255; //set not crossing needles to blue
 	text("-  An individual stick will lie between the lines with probability", 155, 335, 2/3*c_x - 123, 70);
@@ -1101,8 +1068,8 @@ function slide23(){
 	maths1.style.left = "270px";
 }
 
-function slide24(){
-	slide23();
+function slide65(){
+	slide64();
 	textSize(24);
 	fill(0,0,150);
 	text("3.", 120, 427);
@@ -1118,8 +1085,8 @@ function slide24(){
 
 }
 
-function slide25(){
-	slide24();
+function slide66(){
+	slide65();
 	textSize(24);
 	fill(0,0,150);
 	text("4.", 120, 510);
@@ -1132,8 +1099,8 @@ function slide25(){
 
 }
 
-function slide24(){
-	slide25();
+function slide67(){
+	slide66();
 	nspeed = 1;
 	bpi = (2*nlen*(needles.length-1))/(25*crossed);
 	textSize(27);
@@ -1142,7 +1109,7 @@ function slide24(){
 	textSize(22);
 }
 
-function slide27(){
+function slide68(){
 	needles = [];
 	crossed = 0;
 	background(255);
@@ -1156,37 +1123,37 @@ function slide27(){
 		c_x - 170, 75);
 }
 
-function slide28(){
-	slide27();
+function slide69(){
+	slide68();
 	text("○ ", 100, 180);
 	text("In 1901 the Italian mathematician Mario Lazzerini was the first to try out Buffon's discovery.", 120, 160, c_x - 170, 75);
 }
 
-function slide29(){
-	slide28();
+function slide70(){
+	slide69();
 	text("- ", 120, 250);
 	text("He dropped over 3,400 sticks onto the floor and counted up the number that crossed over lines",150, 230, c_x - 200, 75);
 }
 
-function slide30(){
-	slide29();
+function slide71(){
+	slide70();
 	text("- ", 120, 320);
 	text("He estimated π to be 3.1415929", 150, 320);
 }
 
-function slide31(){
-	slide30();
+function slide72(){
+	slide71();
 	text("- ", 120, 355);
 	text("He was correct in the first 6 digits, an error of just 0.000006%",150, 355);
 }
 
-function slide32(){
-	slide31();
+function slide73(){
+	slide72();
 	text("○ ", 100, 390);
 	text("With computers, simulations using randomness to give a sample of results have become much easier and of increasing importance", 120, 370, c_x - 170, 75);
 }
 
-function slide33(){
+function slide74(){
 	background(255);
 	textSize(30);
 	fill(0,0,150);
@@ -1198,48 +1165,57 @@ function slide33(){
 		c_x - 170, 75);
 }
 
-function slide34(){
-	slide33();
+function slide75(){
+	slide74();
 	fill(0,0,150);
 	text("eg.", 120, 145);
 	fill(0);
 	text("40 digits of π are more than enough to calculate the circumference of the Milky Way to an error less than the size of a proton.", 155, 125, c_x - 170, 75);
 }
 
-function slide35(){
-	slide34();
+function slide76(){
+	slide75();
 	text("○ ", 100, 215);
 	text("Calculations of digits of π are excellent for testing the integrity of computer hardware and software.", 120, 195,
 		c_x - 170, 75);
 }
 
-function slide36(){
-	slide35();
+function slide77(){
+	slide76();
 	text("○ ", 100, 285);
 	text("Stimulates research into advanced computational techniques.", 120, 285);
 }
 
-function slide37(){
-	slide36();
+function slide78(){
+	slide77();
 	fill(0,0,150);
 	text("eg.", 120, 320);
 	fill(0);
 	text("New techniques for efficiently computing linear convolutions and Fast Fourier Transforms (FFTs).", 155, 300, c_x - 170, 75);
 }
 
-function slide38(){
-	slide37();
+function slide79(){
+	slide78();
 	text("○ ", 100, 390);
 	text("Mathematicians want to finally solve the unresolved question of the normality of π.", 120, 390);
 }
 
-function slide39(){
-	slide38();
+function slide80(){
+	slide79();
 	text("○ ", 100, 425);
 	text("It is one of the most famous constants in mathematics, and we will always be eager to find more impressive computations of π", 120, 405, c_x - 170, 75);
 }
 
-*/
+function slide81(){
+	background(255);
+	textSize(30);
+	fill(0,0,150);
+	text("References", 20, 30);
+	fill(0);
+	textSize(22);
+}
+
+
 
 /*
 References:
@@ -1286,6 +1262,9 @@ function keyPressed(){
 		if (slidenum > 0){
 			if (slidenum == 40){ //Update to be correct slide
 				slidenum = 39;
+			}
+			if (slidenum == 50){
+				slidenum == 49;
 			}
 			framecount = 1;
 			slidenum -= 1;
