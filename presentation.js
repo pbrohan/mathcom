@@ -15,7 +15,7 @@
 
 function preload(){
 	//img_for = loadImage('./formula.png');
-	//img_two = loadImage('./piproof.png');
+	img_two = loadImage('./piproof.png');
 }
 
 
@@ -224,7 +224,7 @@ function slide3(){
 
 function slide4(){
 	background(255);
-	//image(img_two, 50, 150);
+	image(img_two, 50, 150);
 }
 
 function slide5(){
