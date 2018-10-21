@@ -12,11 +12,12 @@
   var n_a = 0;
   var img_for;
 
-/*
+
 function preload(){
-	img_for = loadImage('./formula.png');
+	//img_for = loadImage('./formula.png');
+	//img_two = loadImage('./piproof.png');
 }
-*/
+
 
 function setup() {
   var myCanvas = createCanvas(c_x, c_y);
@@ -26,7 +27,7 @@ function setup() {
   var n_y = getRndInteger(0,c_y); //Needle y
   var n_a = getRndInteger(0, TWO_PI); //Needle angle
 }
-
+	
 var framecount = 1;
 
 var shape_radius = 150;
@@ -173,7 +174,19 @@ function slide1(){
 
 function slide2(){
 	background(255);
-	text("Currently blank", 300, 300);
+	textSize(22);
+	text("Also, he made a molten sea of ", 100, 210);
+	fill(255, 0, 0)
+	text("ten cubits", 100 + textWidth("Also, he made a molten sea of "), 210);
+	fill(0);
+	text("from brim to brim", 100 + textWidth("Also, he made a molten sea of ten cubits "), 210);
+	text("round in compass, and five cubits in height thereof; and a line", 100, 245);
+	text("of ", 100, 280);
+	fill(255, 0, 0);
+	text("thirty cubits", 100+ textWidth("of "), 280);
+	fill(0);
+	text("did compass it round about ", 100 + textWidth("of thirty cubits "), 280);
+	text("- Kings: 7:23", 100 + textWidth("of thirty cubits did compass it round about   "), 320)
 }
 
 function slide3(){
@@ -210,6 +223,47 @@ function slide3(){
 }
 
 function slide4(){
+	background(255);
+	//image(img_two, 50, 150);
+}
+
+function slide5(){
+	slide4();
+	textSize(22)
+;	text("We have that", 370, 100);
+	katex.render("AB^2 + BC^2 = 1", mykatex1);
+	katex.render("AB = \\sqrt{1-BC^2}", mykatex2);
+	text("Clearly ", 370, 215);
+	katex.render("\\begin{aligned} AB &= \\sqrt{1-(\\frac{d_n}{2})^2}  \\\\ BD &= 1 - AB \\\\\ &= 1 - \\sqrt{1 - \\frac{d^2_n}{4}}  \\end{aligned}", mykatex3);
+	maths.style.top = "135px";
+	maths.style.left = "390px";
+	maths.fontSize = "20px";
+	maths1.style.top = "170px";
+	maths1.style.left = "390px";
+	maths1.fontsize = "20px";
+	maths2.style.top = "240px";
+	maths2.style.left = "390px";
+	maths2.fontSize = "20px";
+
+}
+
+function slide6(){
+	slide4();
+	text("Now we can conclude", 370, 100);
+	katex.render("\\begin{aligned} CD^2 &= BC^2 + BD^2 \\\\ &= (\\frac{d_n}{2})^2 + (1-\\sqrt{1-\\frac{d^2_n}{4}})^2 \\\\ &= \\frac{d^2_n}{4} +" +
+		 "(1 - 2\\sqrt{1 - \\frac{d^2_n}{4}} + (1 - \\frac{d^2_n}{4}))  \\\\ &=2 - 2\\sqrt{1-\\frac{d^2_n}{4}} \\end{aligned}", mykatex1);
+	maths.style.top = "135px";
+	maths.style.left = "390px"
+	maths.fontSize = "20px";
+	text("This gives us", 370, 340);
+	katex.render("CD = d_{2n} = \\sqrt{2-2\\sqrt{1-\\frac{d^2_n}{4}}}",mykatex2);
+	maths1.style.top = "375px";
+	maths1.style.left = "390px";
+	maths.fontSize = "20px";
+}
+
+
+function slide7(){
 	strokeWeight(1);
 	background(255);
 	textSize(30);
@@ -221,25 +275,16 @@ function slide4(){
 	text("In 1593, François Viéte published 'Variorum de rebus mathematicis responsorum, liber VIII'.", 120, 110);
 }
 
-function slide5(){
-	slide4();
+function slide8(){
+	slide7();
 	text("○", 100, 145);
 	text("He advances the Archemedian idea of using polygons to approximate π, but instead of using it to create an "
 	+ "approximation, he used it to create an exact expression of π.", 120, 125, c_x - 150, 75);
 }
 
-/* - Try again when hosting?
-function slide6(){
-	slide5();
-	image(img_for, 170, 210);
-	nterm_viet = 0
-	viet_pi = 1;
-	viet_term = 0;
-	vier_speed = 80;
-}
-*/
-function slide6(){ //If I have time, could update formula as we go along as well.
-	slide5();
+
+function slide9(){ //If I have time, could update formula as we go along as well.
+	slide8();
 	katex.render("\\frac{2}{\\pi}=\\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{2+\\sqrt{2}}}{2} \\cdot \\frac{\\sqrt{2+ \\sqrt{2 + \\sqrt{2}}}}{2} \\ldots",mykatex1);
 	maths.style.top = "210px";
 	maths.style.left = "170px";
@@ -255,24 +300,24 @@ function slide6(){ //If I have time, could update formula as we go along as well
 	framecount += 1
 }
 
-function slide7(){
-	slide6();
+function slide10(){
+	slide9();
 	text("○", 100, 380);
 	text("This is the first published example of an infinite product.", 120, 380);
 }
 
-function slide8(){
-	slide7();
+function slide11(){
+	slide10();
 	text("○", 100, 415);
 	text("As a hand-computed method, this is relatively effective, and Viéte used it to compute π accutately to 9 decimal places", 120, 395, c_x -150, 75);	
 }
 
-function slide9(){
-	slide8();
+function slide12(){
+	slide11();
 	viet_speed = 10;
 }
 
-function slide10(){
+function slide13(){
 	background(255);
 	textSize(30);
 	fill(0,0,150);
@@ -283,16 +328,16 @@ function slide10(){
 	text("When asked how to compute π, most undergraduate mathematicians would be able to point you towards the Leibniz sequence.", 120, 90, c_x - 150, 75);
 }
 
-function slide11(){
-	slide10();
+function slide14(){
+	slide13();
 	katex.render("\\frac{\\pi}{4} = 1 - \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{7} + \\ldots + (-1)^n \\frac{1}{2n+1} ",mykatex1);
 	maths.style.fontSize = "27px"
 	maths.style.top = "170px";
 	maths.style.left = "200px";
  }
 
- function slide12(){
- 	slide11();
+ function slide15(){
+ 	slide14();
  	text("○", 100, 250);
  	text("In 1671, James Gregory published a paper in Mathematics Magazine stating a new expression for arctan(x):", 120, 230, c_x - 150, 75);
  	katex.render("arctan(x) = x - \\frac{x^3}{3} + \\frac{x^5}{5}- \\frac{x^7}{7} + \\ldots + (-1)^n\\frac{x^{2n+1}}{2n+1}",mykatex2);
@@ -306,19 +351,19 @@ function slide11(){
 
  }
 
- function slide13(){
- 	slide12();
+ function slide16(){
+ 	slide15();
  	text("○", 100, 405);
  	text("However, in 1835, C. M. Whish published a collection of 16th century papers from the Kerala school of Astronomy and Mathematics in Eastern India.", 120, 385, c_x - 150, 75);
  }
 
- function slide14(){
- 	slide13();
+ function slide17(){
+ 	slide16();
  	text("○", 100, 465);
  	text("We now generally credit this discovery to Madhava of Sangamagrama (1340 - 1425), the founder of the school.", 120, 445, c_x - 150, 75);
  }
 
- function slide15(){
+ function slide18(){
  	background(255);
 	textSize(30);
 	fill(0,0,150);
@@ -329,8 +374,8 @@ function slide11(){
  	text("One of the later papers by the group gives a proof:", 120, 150);
  }
 
- function slide16(){
- 	slide15();
+ function slide19(){
+ 	slide18();
  	textSize(30);
  	fill(255, 0, 0);
 	text("^", 125, 60);
@@ -359,13 +404,13 @@ function msquare1(){
 }
 
 
- function slide17(){
- 	slide16();
+ function slide20(){
+ 	slide19();
  	fill(0,0,150);
  	text("1", 100, 200);
  	fill(0);
- 	text("Draw a quarter circle with center O and radius 1 inside a square", 120, 180, c_x - 600, 75);
- 	if (slidenum == (17)){
+ 	text("Draw a quarter circle inside a square", 120, 180, c_x - 600, 75);
+ 	if (slidenum == (20)){
  		 msquare1();
  	}
 
@@ -392,13 +437,13 @@ function msquare2(){
  	noStroke(); 
 }
 
- function slide18(){
- 	slide17();
+ function slide21(){
+ 	slide20();
  	fill(0,0,150);
  	text("2", 100, 270);
  	fill(0);
  	text("Split the side of the square into n equal parts of length 𝛿, and join two ends of the rth length, A and B to the center of the arc.", 120, 250, c_x - 600, 110);
- 	if (slidenum == 18); {
+ 	if (slidenum == 21); {
  	msquare2();
  	}
  }
@@ -418,9 +463,9 @@ function msquare2(){
 }
 
 
-function slide19(){
-	slide18();
-	if (slidenum == 19){
+function slide22(){
+	slide21();
+	if (slidenum == 22){
 	msquare3();
 	}
 
@@ -446,9 +491,9 @@ function msquare4(){
  	text("D", 530 + 400*sf/400*(x_t - 550), 210 + sf*(y_t-200));
 }
 
-function slide20(){
-	slide19();
-	if (slidenum == 20){
+function slide23(){
+	slide22();
+	if (slidenum == 23){
 	msquare4();
 	}
 	fill(0,0,150);
@@ -465,135 +510,29 @@ function msquare5(){
 	text("E",x_t-20,y_t+10);
 }
 
-function slide21(){
-	slide20();
-	msquare5();
-}
-
-function slide22(){
-	slide21();
-	text("This gives us two similar triangles OAE and OCD, and so", 120, 460, c_x - 600, 110);
-	katex.render("\\frac{|CD|}{|OC|} = \\frac{|AE|}{|OA|}",mykatex1);
-	maths.style.top = "550px";
-	maths.style.left = "150px";
-	maths.style.fontSize = "20px";
-}
-
-function slide23(){
-	slide21();
-	text("This gives us two similar triangles OAE and OCD, and so", 120, 460, c_x - 600, 110);
-	katex.render("\\frac{|CD|}{|OC|} = \\frac{|AE|}{|OA|} \\therefore |CD| = \\frac{|AE|}{|OA|}",mykatex1);
-	maths.style.top = "550px";
-	maths.style.left = "150px";
-	maths.style.fontSize = "20px";
-}
-
 function slide24(){
-	background(255);
-	textSize(30);
-	fill(0,0,150);
-	text("The Leibniz Sequence", 20, 30);
-	fill(255, 0, 0);
-	text("^", 125, 60);
-	rotate(0.4);
-	textSize(25);
-	text("Madhava", 100, 20);
-	rotate(-0.4);
-	fill(0);
-	stroke(255,0,0);
-	strokeWeight(2);
-	line(85, 30, 170, 7);
-	strokeWeight(1);
-	noStroke();
-	textSize(22);
+	slide23();
 	msquare5();
-	katex.render("|CD| = \\frac{|AE|}{|OA|}",mykatex1);
-	maths.style.top = "140px";
-	maths.style.left = "150px";
-	maths.style.fontSize = "20px";
-
-	fill(0,0,150);
- 	text("4", 100, 200);
- 	fill(0);
- 	text("We can also see that triangles AEB and OBX are similar, and so", 120, 180, c_x - 600, 75);
 }
 
 function slide25(){
 	slide24();
-	katex.render("\\frac{|AB|}{|OB|} = \\frac{|AE|}{|OX|}",mykatex2);
-	maths1.style.top = "250px";
-	maths1.style.left = "150px";
-	maths1.style.fontSize = "20px";
+	if (slidenum == 25){
+		slidenum = 31;}
+
 }
 
-function slide26(){
-	slide24();
-	katex.render("\\frac{|AB|}{|OB|} = |AE|",mykatex2);
-	maths1.style.top = "250px";
-	maths1.style.left = "150px";
-	maths1.style.fontSize = "20px";
-}
-
-function slide27(){
-	slide26();
-	fill(0,0,150);
- 	text("5", 100, 310);
- 	fill(0);
- 	text("And so we can conclude that", 120, 290, c_x - 600, 75);
- 	katex.render("|CD| = \\frac{|AB|}{|OA||OB|}", mykatex3);
- 	maths2.style.top = "330px";
- 	maths2.style.left = "150px";
- 	maths2.style.fontSize = "20px";
-}
-
-function slide28(){
-	slide26();
-	fill(0,0,150);
- 	text("5", 100, 310);
- 	fill(0);
- 	text("And so we can conclude that", 120, 290, c_x - 600, 75);
- 	katex.render("|CD| = \\frac{|AB|}{|OA||OB|} \\approx \\frac{|AB|}{|OA|^2}", mykatex3);
- 	maths2.style.top = "330px";
- 	maths2.style.left = "150px";
- 	maths2.style.fontSize = "20px";
-}
-
-function slide29(){
-	slide28();
-	fill(0,0,150);
- 	text("6", 100, 390);
- 	fill(0);
- 	text("And so, by the Pythagorean theorem", 120, 370, c_x - 600, 75);
- 	katex.render("|CD| = \\frac{\\delta}{1^2 + |XA|^2}", mykatex4)
- 	maths3.style.top = "415px";
- 	maths3.style.left = "150px";
- 	maths3.style.fontSize = "20px";
- 	 num_parts = 5;
-}
-
-function slide30(){
-	slide28();
-	fill(0,0,150);
- 	text("6", 100, 390);
- 	fill(0);
- 	text("And so, by the Pythagorean theorem", 120, 370, c_x - 600, 75);
- 	katex.render("|CD| = \\frac{\\delta}{1^2 + |XA|^2} = \\frac{\\delta}{1 + r^2\\delta^2}", mykatex4)
-  	maths3.style.top = "415px";
- 	maths3.style.left = "150px";
- 	maths3.style.fontSize = "20px";
-}
 
 function slide31(){
-	slide30();
+	slide24();
 	fill(0,0,150);
- 	text("7", 100, 470);
+ 	text("4", 100, 470);
  	fill(0);
  	text("As CD approximates the arc of the circle, we can in general say", 120, 450, c_x - 600, 75);
  	katex.render("\\frac{\\pi}{4}=\\lim_{n \\rightarrow \\infty}\\sum_{r = 1}^{n} \\frac{\\delta}{1 + r^2\\delta^2}; \\delta = \\frac{1}{n}", mykatex5);
  	maths4.style.top = "520px";
  	maths4.style.left = "150px";
  	maths4.style.fontSize = "20px"
-
 }
 
 function slide32(){
@@ -916,6 +855,10 @@ function slide54(){
   	}
   	strokeWeight(1);
   	noStroke();
+  	textSize(27);
+	text("π ≈", 220, 620);
+	cpi((4*dots_in/(dots_in+dots_out)).toString(), 220 + textWidth("π ≈  "), 620)
+	textSize(22);
 }
 
 function slide55(){
@@ -942,6 +885,10 @@ function slide55(){
 	maths3.style.top = "343px";
 	maths3.style.left = (textWidth("- The number of points chosen lying in the circle will be approximately N")+170)
 		.toString() + "px";
+	  textSize(27);
+	text("π ≈", 220, 620);
+	cpi((4*dots_in/(dots_in+dots_out)).toString(), 220 + textWidth("π ≈  "), 620)
+	textSize(22);
 }
 
 function slide56(){
@@ -974,10 +921,6 @@ function slide57(){
 
 function slide58(){
 	slide57();
-	textSize(27);
-	text("π ≈", 220, 620);
-	cpi((4*dots_in/(dots_in+dots_out)).toString(), 220 + textWidth("π ≈  "), 620)
-	textSize(22);
 
 }
 
@@ -1048,6 +991,11 @@ function slide62(){
   	}
   	j += 1
   	noStroke();
+	bpi = (2*nlen*(needles.length-1))/(25*crossed);
+	textSize(27);
+	text("π ≈", 220, 630);
+	cpi(bpi.toString() ,220 + textWidth("π ≈  "), 630);
+	textSize(22);
 }
 
 function slide63(){
@@ -1081,8 +1029,8 @@ function slide65(){
 	fill(255);
 	rect(c_x-100, c_y-75, 150, 75);
 	fill(0);
-	text("N: " + needles.length.toString(),c_x - 95, c_y - 70);
-	text("M: " + crossed.toString(),c_x-95, c_y - 35);
+	text("N: " + needles.length.toString(),c_x - 95, c_y - 50);
+	text("M: " + crossed.toString(),c_x-95, c_y - 20);
 	iscross = 255;
 
 }
@@ -1104,37 +1052,69 @@ function slide66(){
 function slide67(){
 	slide66();
 	nspeed = 1;
-	bpi = (2*nlen*(needles.length-1))/(25*crossed);
-	textSize(27);
-	text("π ≈", 220, 620);
-	cpi(bpi.toString() ,220 + textWidth("π ≈  "), 620)
 	textSize(22);
 }
 
 function slide68(){
-	needles = [];
-	crossed = 0;
 	background(255);
 	textSize(30);
 	fill(0,0,150);
 	text("Buffon's Needle", 20, 30);
+	stroke(0);
+	makelines(25);
+	for (i = 1; i < needles.length; i++){
+		if (needles[i][3]) {
+			stroke(iscross, 0, 0);
+		} else {
+			stroke(0, 0, niscross);
+		}
+		newneedle(needles[i][0], needles[i][1], nlen, needles[i][2]);
+	}
+	stroke(0);
+	curr_x = c_x*5/6 + j*(n_x - c_x*5/6)/nspeed;
+	curr_y = 0 + j*(n_y)/nspeed;
+	curr_angle = j*(n_a+TWO_PI)/nspeed;
+	newneedle(curr_x,curr_y,nlen,curr_angle);
+	if (j >= nspeed){
+		j = 0;
+		if (crosses(n_y,n_y+ nlen*sin(n_a),25)){
+			crossed += 1
+		}
+		needles.push([n_x,n_y,n_a,crosses(n_y,n_y+ nlen*sin(n_a),25)])
+	n_x = getRndInteger(c_x*2/3,c_x);
+  	n_y = getRndInteger(0,c_y);
+  	n_a = getRndInteger(0,TWO_PI);
+  	}
+  	j += 1
+  	noStroke();
+	bpi = (2*nlen*(needles.length-1))/(25*crossed);
+	textSize(27);
+	text("π ≈", 220, 630);
+	cpi(bpi.toString() ,220 + textWidth("π ≈  "), 630);
+	textSize(22);
+	noStroke();
+	fill(255);
+	rect(c_x-100, c_y-75, 150, 75);
+	fill(0);
+	text("N: " + needles.length.toString(),c_x - 95, c_y - 50);
+	text("M: " + crossed.toString(),c_x-95, c_y - 20);
 	fill(0);
 	textSize(22);
 	text("○ ", 100, 110);
 	text("The problem was proposed in 1777 by the French philosopher Georges-Louis Leclerc, Comte du Buffon", 120, 90,
-		c_x - 170, 75);
+		2/3*c_x - 123, 75);
 }
 
 function slide69(){
 	slide68();
 	text("○ ", 100, 180);
-	text("In 1901 the Italian mathematician Mario Lazzerini was the first to try out Buffon's discovery.", 120, 160, c_x - 170, 75);
+	text("In 1901 the Italian mathematician Mario Lazzerini was the first to try out Buffon's discovery.", 120, 160, 2/3*c_x - 123, 75);
 }
 
 function slide70(){
 	slide69();
 	text("- ", 120, 250);
-	text("He dropped over 3,400 sticks onto the floor and counted up the number that crossed over lines",150, 230, c_x - 200, 75);
+	text("He dropped over 3,400 sticks onto the floor and counted up the number that crossed over lines",150, 230, 2/3*c_x - 150, 75);
 }
 
 function slide71(){
@@ -1146,13 +1126,13 @@ function slide71(){
 function slide72(){
 	slide71();
 	text("- ", 120, 355);
-	text("He was correct in the first 6 digits, an error of just 0.000006%",150, 355);
+	text("He was correct in the first 6 digits, an error of just 0.000006%",150, 335, 2/3*c_x - 150, 75);
 }
 
 function slide73(){
 	slide72();
-	text("○ ", 100, 390);
-	text("With computers, simulations using randomness to give a sample of results have become much easier and of increasing importance", 120, 370, c_x - 170, 75);
+	text("○ ", 100, 430);
+	text("With computers, simulations using randomness to give a sample of results have become much easier and of increasing importance", 120, 410, 2/3*c_x - 123, 110);
 }
 
 function slide74(){
@@ -1229,6 +1209,7 @@ function slide81(){
 
 
 
+
 /*
 References:
 http://crd-legacy.lbl.gov/~dhbailey/dhbpapers/pi-quest.pdf - The Quest for pi
@@ -1276,7 +1257,10 @@ function keyPressed(){
 				slidenum = 39;
 			}
 			if (slidenum == 50){
-				slidenum == 49;
+				slidenum = 49;
+			}
+			if (slidenum == 31){
+				slidenum = 25;
 			}
 			framecount = 1;
 			slidenum -= 1;
