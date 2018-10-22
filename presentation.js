@@ -15,7 +15,7 @@
 
 function preload(){
 	//img_for = loadImage('./formula.png');
-	img_two = loadImage('./piproof.png');
+	//img_two = loadImage('./piproof.png');
 }
 
 
@@ -57,7 +57,7 @@ var dots_in = 0;
 var dots_out = 0;
 var circlespan = 0;
 
-var nlen = 20;
+var nlen = 24;
 var needles = [];
 var curr_x = 0;
 var curr_y = 0;
@@ -220,11 +220,15 @@ function slide3(){
 	cpi(n.toString(), 450 + textWidth("Mean perimeter: "),120);
 	framecount += 1;
 	maths.style.top = framecount.toString() + "px";
+	picdiv.style.display = "none";
 }
 
 function slide4(){
 	background(255);
-	image(img_two, 50, 150);
+	//image(img_two, 50, 150);
+	picdiv.style.display = "inline";
+	picdiv.style.top = "100px";
+	picdiv.style.left = "50px";
 }
 
 function slide5(){
@@ -237,13 +241,13 @@ function slide5(){
 	katex.render("\\begin{aligned} AB &= \\sqrt{1-(\\frac{d_n}{2})^2}  \\\\ BD &= 1 - AB \\\\\ &= 1 - \\sqrt{1 - \\frac{d^2_n}{4}}  \\end{aligned}", mykatex3);
 	maths.style.top = "135px";
 	maths.style.left = "390px";
-	maths.fontSize = "20px";
+	maths.style.fontSize = "16px";
 	maths1.style.top = "170px";
 	maths1.style.left = "390px";
-	maths1.fontsize = "20px";
+	maths1.style.fontsize = "16px";
 	maths2.style.top = "240px";
 	maths2.style.left = "390px";
-	maths2.fontSize = "20px";
+	maths2.style.fontSize = "16px";
 
 }
 
@@ -254,16 +258,17 @@ function slide6(){
 		 "(1 - 2\\sqrt{1 - \\frac{d^2_n}{4}} + (1 - \\frac{d^2_n}{4}))  \\\\ &=2 - 2\\sqrt{1-\\frac{d^2_n}{4}} \\end{aligned}", mykatex1);
 	maths.style.top = "135px";
 	maths.style.left = "390px"
-	maths.fontSize = "20px";
+	maths.style.fontSize = "16px";
 	text("This gives us", 370, 340);
 	katex.render("CD = d_{2n} = \\sqrt{2-2\\sqrt{1-\\frac{d^2_n}{4}}}",mykatex2);
 	maths1.style.top = "375px";
 	maths1.style.left = "390px";
-	maths.fontSize = "20px";
+	maths.style.fontSize = "16px";
 }
 
 
 function slide7(){
+	picdiv.style.display = "none";
 	strokeWeight(1);
 	background(255);
 	textSize(30);
@@ -1223,7 +1228,8 @@ var maths1 = document.getElementById('mykatex2');
 var maths2 = document.getElementById('mykatex3');
 var maths3 = document.getElementById('mykatex4');
 var maths4 = document.getElementById('mykatex5');
-var maths5 = document.getElementById('mykatex6')
+var maths5 = document.getElementById('mykatex6');
+var picdiv = document.getElementById('picture');
 
 function draw() {
 	/*
